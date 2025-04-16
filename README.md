@@ -139,7 +139,7 @@ buildHeap()의 전체 시간 복잡도는 → O(n)이다.
 → 이 연산은 힙의 높이인 log n 만큼 수행되므로 시간복잡도는 O(log n)
 
 
-## LeetCode 703.Kth Largest Element in Stream
+## 6. LeetCode 703.Kth Largest Element in Stream
 ```python
 import heapq
 
