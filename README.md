@@ -99,6 +99,103 @@ for i in range(10):
 10. 김예빈 - 2005-10-19
 
 ## 4. list
+```python
+class BidirectNode:
+    def __init__(self, item, prev=None, next=None):
+        self.item = item
+        self.prev = prev
+        self.next = next
+
+class CircularDoublyLinkedList:
+    def __init__(self):
+        self.__head = BidirectNode("dummy", None, None)
+        self.__head.prev = self.__head
+        self.__head.next = self.__head
+        self.__numItems = 0
+
+    def insert(self, i:int, newItem) -> None:
+        if (i >= 0 and i <= self.__numItems):
+            prev = self.getNode(i - 1)
+            newNode = BidirectNode(newItem, prev, prev.next)
+            newNode.next.prev = newNode
+            prev.next = newNode
+            self.__numItems += 1
+        else:
+            print("index", i, ": out of bound in insert()")
+
+    def append(self, newItem) -> None:
+        prev = self.__head.prev
+        newNode = BidirectNode(newItem, prev, self.__head)
+        prev.next = newNode
+        self.__head.prev = newNode
+        self.__numItems += 1
+
+    def getNode(self, i:int) -> BidirectNode:
+        curr = self.__head
+        for index in range(i + 1):
+            curr = curr.next
+        return curr
+
+    def isEmpty(self) -> bool:
+        return self.__numItems == 0
+
+    def size(self) -> int:
+        return self.__numItems
+
+    def __iter__(self):
+        return CircularDoublyLinkedListIterator(self)
+
+class CircularDoublyLinkedListIterator:
+    def __init__(self, alist):
+        self.__head = alist.getNode(-1)
+        self.iterPosition = self.__head.next
+
+    def __next__(self):
+        if self.iterPosition == self.__head:
+            raise StopIteration
+        else:
+            item = self.iterPosition.item
+            self.iterPosition = self.iterPosition.next
+            return item
+
+    def __iter__(self):
+        return self
+
+# --- 실행 코드 ---
+
+# CircularDoublyLinkedList 객체 생성
+birthday_list = CircularDoublyLinkedList()
+
+# 생일 데이터 (학번, 이름, 생년월일)
+data = [
+    ("20222618", "김연진", "2002-05-14"),
+    ("20241218", "변수연", "2004-11-22"),
+    ("20241267", "정윤서", "2004-08-09"),
+    ("20231356", "박서연", "2003-01-17"),
+    ("20231350", "노은서", "2003-02-25"),
+    ("20241230", "오세은", "2004-12-01"),
+    ("20230860", "박성연", "2003-03-03"),
+    ("20241178", "김민경", "2004-06-28"),
+    ("20232633", "김보민", "2003-08-18"),
+]
+
+# 리스트에 데이터 추가
+for person in data:
+    birthday_list.append(person)
+
+# 지정된 조원의 학번만 저장
+my_team_ids = {
+    "20222618", "20241218", "20241267",
+    "20231356", "20231350", "20241230",
+    "20230860", "20241178", "20232633"
+}
+
+# 출력
+print("우리 조 친구들의 생일 목록:")
+for student_id, name, birth in birthday_list:
+    if student_id in my_team_ids:
+        print(f"{name} ({student_id}): {birth}")
+```
 
 ## 5. 8장 우선 순위 큐 연습문제
 ### 1번. 
