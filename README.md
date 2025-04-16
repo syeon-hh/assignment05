@@ -1,8 +1,7 @@
 # assignment05
 
 ## 3. heap
-<pre>
-<code>
+```python
 import csv
 from datetime import datetime
 
@@ -85,8 +84,7 @@ for i in range(10):
         print(f"{i+1}. {name} - {bday.strftime('%Y-%m-%d')}")
     else:
         break
-</code>
-</pre>
+```
 
 생일이 늦은 친구 Top 10:
 1. 신수민 - 2005-12-30
