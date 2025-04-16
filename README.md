@@ -2,7 +2,8 @@
 자료구조 과제5
 
 ## 3. 생일 데이터를 교재 코드(heap.py)를 이용해 힙으로 저장하고, 생일이 느린 순서로 10명의 친구를 출력하는 코드를 작성한다. 실행 결과가 셀에 나타나야 한다. 
-'''
+<pre>
+<code>
 import csv
 from datetime import datetime
 
@@ -76,7 +77,7 @@ with open(r'C:\python09\DS_Birthdaydata.csv', newline='', encoding='cp949') as c
             except ValueError:
                 # 포맷 오류가 있는 경우 무시
                 print(f"⚠ 잘못된 생일 포맷 제외됨: {name} - {birthday_str}")
-'''
+
 
 print("🎂 생일이 늦은 친구 Top 10:") # 3. 생일이 늦은 친구 10명 출력
 for i in range(10):
@@ -85,3 +86,5 @@ for i in range(10):
         print(f"{i+1}. {name} - {bday.strftime('%Y-%m-%d')}")
     else:
         break
+</code>
+</pre>
