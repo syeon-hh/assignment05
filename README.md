@@ -2,6 +2,7 @@
 자료구조 과제5
 
 ## 3. 생일 데이터를 교재 코드(heap.py)를 이용해 힙으로 저장하고, 생일이 느린 순서로 10명의 친구를 출력하는 코드를 작성한다. 실행 결과가 셀에 나타나야 한다. 
+in [1]: 
 import csv
 from datetime import datetime
 
